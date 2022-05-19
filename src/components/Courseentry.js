@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import Navbar from './Navbar'
 
@@ -10,6 +11,19 @@ const Courseentry = () => {
     const subData=()=>{
         const data={"title":title,"duration":duration,"description":description,"venue":venue,"date":date}
         console.log(data)
+        axios.post("https://mylinkurcodesapp.herokuapp.com/addcourse",data).then(
+            (response)=>{
+                console.log(response.data)
+                if(response.data.status=="success")
+                {
+            alert("succesfully added")
+                }
+                else
+                {
+                    alert("failed to add")
+                }
+            }
+        )
             }
   return (
     <div>
